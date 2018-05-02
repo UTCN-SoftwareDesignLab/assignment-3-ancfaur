@@ -1,0 +1,52 @@
+<!DOCTYPE HTML>
+<html   lang="en"
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Employee Management</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<h1>Employee Management</h1>
+<form autocomplete="off" action="#" th:action="@{/admin/administratorMenu}" th:object="${userDto}" method="post">
+    <table>
+        <tr>
+            <td>If update, introduce id:</td>
+            <td><input type="text" th:field="*{id}" /></td>
+        </tr>
+        <tr>
+            <td>Username:</td>
+            <td><input type="text" th:field="*{username}" /></td>
+            <td th:if="${#fields.hasErrors('username')}" th:errors="*{username}">Username Error</td>
+        </tr>
+        <tr>
+            <td>Password:</td>
+            <td><input type="text" th:field="*{password}" /></td>
+            <td th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Password Error</td>
+        </tr>
+    </table>
+
+    <p>Role:</p>
+    <select name="selRole">
+        <option th:each="role : ${roles}" th:text="${role}"></option> </select>
+
+    <p><input type="submit" name="createBtn" value="Create" /></p>
+    <p><input type="submit" name="updateBtn" value="Update" /></p>
+</form>
+
+
+<form autocomplete="off" action="#" th:action="@{/admin/administratorMenu}" th:object="${userDto}" method="post">
+    <p>Id: <input type="text" th:field="*{id}" /></p>
+    <p><input type="submit" name="deleteBtn" value="Delete" /></p>
+</form>
+
+<form action="#" th:action="@{/admin/administratorMenu/showAll}" th:object="${userDto}" method="post">
+    <p><input type="submit" name="showAllBtn" value="Show all" /></p>
+</form>
+
+<form th:action="@{/logout}" method="post">
+    <input type="submit" name="logoutBtn" value="Log Out"/>
+</form>
+
+</body>
+</html>

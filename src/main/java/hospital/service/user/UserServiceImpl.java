@@ -5,6 +5,7 @@ import hospital.dto.UserDto;
 import hospital.entity.User;
 import hospital.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -13,7 +14,7 @@ import java.util.List;
 public class UserServiceImpl implements UserService {
     private UserRepository userRepository;
     private UserConverter userConverter;
-    //private final BCryptPasswordEncoder encoder =  new BCryptPasswordEncoder();
+    private final BCryptPasswordEncoder encoder =  new BCryptPasswordEncoder();
 
     @Autowired
     public UserServiceImpl(UserRepository userRepository, UserConverter userConverter){
@@ -24,7 +25,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void update(UserDto userDto) {
-        //userDto.password = encoder.encode(userDto.password);
+        userDto.setPassword(encoder.encode(userDto.getPassword()));
         userRepository.save(userConverter.fromDto(userDto));
     }
 
@@ -43,7 +44,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public UserDto register(UserDto userDto) {
-        //userDto.password = encoder.encode(userDto.password);
+        userDto.setPassword(encoder.encode(userDto.getPassword()));
         User user = userConverter.fromDto(userDto);
         User back = userRepository.save(user);
         userDto.setId(back.getId());
@@ -62,8 +63,8 @@ public class UserServiceImpl implements UserService {
         userRepository.deleteAll();
     }
 
-//    @Override
-//    public boolean checkPasswords(String rawPass, String encodedPass){
-//        return encoder.matches(rawPass, encodedPass);
-//    }
+    @Override
+    public boolean checkPasswords(String rawPass, String encodedPass){
+        return encoder.matches(rawPass, encodedPass);
+    }
 }

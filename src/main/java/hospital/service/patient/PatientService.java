@@ -9,4 +9,7 @@ public interface PatientService {
     void update(PatientDto patientDto);
     List<PatientDto> findAll();
     PatientDto findById(Long id);
+
+    // for testing
+    void removeAll();
 }

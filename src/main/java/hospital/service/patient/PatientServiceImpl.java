@@ -1,6 +1,6 @@
 package hospital.service.patient;
 
-import hospital.converter.PatientConverter;
+import hospital.converter.patient.PatientConverter;
 import hospital.dto.PatientDto;
 import hospital.entity.Patient;
 import hospital.repository.PatientRepository;
@@ -43,5 +43,10 @@ public class PatientServiceImpl implements PatientService {
     @Override
     public PatientDto findById(Long id){
         return patientConverter.toDto(patientRepository.findById(id).orElse(null));
+    }
+
+    @Override
+    public void removeAll() {
+        patientRepository.deleteAll();
     }
 }

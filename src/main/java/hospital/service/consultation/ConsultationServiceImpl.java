@@ -1,6 +1,6 @@
 package hospital.service.consultation;
 
-import hospital.converter.ConsultationConverter;
+import hospital.converter.consultation.ConsultationConverter;
 import hospital.dto.ConsultationDto;
 import hospital.entity.Consultation;
 import hospital.entity.Patient;
@@ -96,6 +96,11 @@ public class ConsultationServiceImpl implements ConsultationService {
         consultation.setDescription(consultationDto.getDescription());
         consultation.setDiagnostic(consultationDto.getDiagnostic());
         consultationRepository.save(consultation);
+    }
+
+    @Override
+    public void removeAll() {
+        consultationRepository.deleteAll();
     }
 
     private Consultation getConsultationWithDependencies(ConsultationDto consultationDto){

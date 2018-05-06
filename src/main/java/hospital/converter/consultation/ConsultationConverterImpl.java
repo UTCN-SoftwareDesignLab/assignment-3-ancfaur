@@ -1,5 +1,6 @@
-package hospital.converter;
+package hospital.converter.consultation;
 
+import hospital.converter.DateConverter;
 import hospital.dto.ConsultationDto;
 import hospital.entity.Consultation;
 import hospital.entity.Patient;

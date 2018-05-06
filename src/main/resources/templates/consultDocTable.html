@@ -6,7 +6,7 @@
     <meta charset="UTF-8"/>
     <title>Consults</title>
 </head>
-<body>
+<body onload="connect()" onunload="disconnect()">
 <form th:action="@{'/consultDocTable'}" method="post">
     <table border="2">
         <thead>
@@ -31,6 +31,5 @@
         </tbody>
     </table>
 </form>
-
 </body>
 </html>

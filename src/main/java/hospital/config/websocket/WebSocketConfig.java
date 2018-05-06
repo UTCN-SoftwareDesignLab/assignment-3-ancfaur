@@ -22,14 +22,4 @@ public class WebSocketConfig extends AbstractWebSocketMessageBrokerConfigurer {
                 .withSockJS();
     }
 
-//    @Override
-//    public void configureClientOutboundChannel(ChannelRegistration registration) {
-//        registration.taskExecutor().corePoolSize(1);
-//    }
-//
-//    @Override
-//    public void configureClientInboundChannel(ChannelRegistration registration) {
-//        registration.taskExecutor().corePoolSize(1);
-//    }
-
 }

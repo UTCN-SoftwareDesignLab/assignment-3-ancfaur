@@ -1,4 +1,4 @@
-package hospital.converter;
+package hospital.converter.user;
 
 import hospital.dto.UserDto;
 import hospital.entity.Role;
@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Component
-public class UserConverterImpl implements UserConverter{
+public class UserConverterImpl implements UserConverter {
     private RoleRepository roleRepository;
 
     @Autowired

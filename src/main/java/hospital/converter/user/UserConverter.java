@@ -1,4 +1,4 @@
-package hospital.converter;
+package hospital.converter.user;
 
 import hospital.dto.UserDto;
 import hospital.entity.User;

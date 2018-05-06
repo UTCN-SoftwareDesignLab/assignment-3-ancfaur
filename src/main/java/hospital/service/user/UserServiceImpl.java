@@ -1,6 +1,6 @@
 package hospital.service.user;
 
-import hospital.converter.UserConverter;
+import hospital.converter.user.UserConverter;
 import hospital.dto.UserDto;
 import hospital.entity.User;
 import hospital.repository.UserRepository;
@@ -75,7 +75,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void deleteAll(){
+    public void removeAll(){
         userRepository.deleteAll();
     }
 

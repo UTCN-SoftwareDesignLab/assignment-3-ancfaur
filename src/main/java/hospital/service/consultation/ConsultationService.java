@@ -13,4 +13,7 @@ public interface ConsultationService {
     List<ConsultationDto> findAllForPatient(Long patientId);
     ConsultationDto findById(Long id);
     void fillConsultationDetails(ConsultationDto consultationDto);
+
+    // for testing
+    void removeAll();
 }

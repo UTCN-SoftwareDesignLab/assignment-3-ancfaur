@@ -92,7 +92,7 @@ public class SecretaryController {
     }
 
     @PostMapping(params = "searchConsultBtn")
-    public String delete(@RequestParam("doctorId") String doctorId, Model model) {
+    public String searchConsultations(@RequestParam("doctorId") String doctorId, Model model) {
         List<ConsultationDto> consultationDtos = consultationService.findFutureScheduleForDoctor(Long.parseLong(doctorId));
         model.addAttribute("consultationDtos", consultationDtos);
         return "consultSecretTable";
@@ -130,6 +130,13 @@ public class SecretaryController {
         consultationService.update(consultationDto);
         return "redirect:/secretary/secretaryMenu";
     }
+
+    @PostMapping(params = "deleteConsBtn")
+    public String deleteConsultation(@RequestParam("consId") String consId) {
+        consultationService.delete(Long.parseLong(consId));
+        return "redirect:/secretary/secretaryMenu";
+    }
+
 
     @PostMapping(value = "/error")
     @ExceptionHandler({ConsultationOverlapException.class})

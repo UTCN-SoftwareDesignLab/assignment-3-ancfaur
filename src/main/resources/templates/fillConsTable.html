@@ -5,8 +5,15 @@
 <head>
     <meta charset="UTF-8"/>
     <title>Consults Edit</title>
+    <link href="/webjars/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/main.css" rel="stylesheet">
+    <script src="/webjars/jquery/jquery.min.js"></script>
+    <script src="/webjars/sockjs-client/sockjs.min.js"></script>
+    <script src="/webjars/stomp-websocket/stomp.min.js"></script>
+    <script src="/appDoc.js"></script>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
-<body>
+<body onload="connect()">
 <form th:action="@{'/doctor/fillConsTable'}" method="post">
     <table border="2">
         <thead>
@@ -36,5 +43,28 @@
 </form>
 
 <a href="/doctor/doctorMenu">Back to doctor menu page</a>
+
+
+<noscript><h2 style="color: #ff0000">Seems your browser doesn't support Javascript! Websocket relies on Javascript being
+    enabled. Please enable
+    Javascript and reload this page!</h2></noscript>
+<div id="main-content" class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <table id="conversation" class="table table-striped">
+                <thead>
+                <tr>
+                    <th>New Appointments</th>
+                </tr>
+                </thead>
+                <tbody id="appointments">
+                </tbody>
+            </table>
+        </div>
+    </div>
+    </form>
+</div>
+
+
 </body>
 </html>

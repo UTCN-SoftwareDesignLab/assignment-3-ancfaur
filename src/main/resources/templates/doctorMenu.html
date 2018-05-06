@@ -12,7 +12,7 @@
     <script src="/appDoc.js"></script>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
-<body onload="connect()" onunload="disconnect()">
+<body onload="connect()">
 <h1>Choose operation type</h1>
 <form action="#" name="adminMenu" th:action="@{/doctor/doctorMenu}" method="post">
     <p><input type="submit" name="patientRecordsBtn" value="See patient records" /></p>
@@ -32,7 +32,7 @@
             <table id="conversation" class="table table-striped">
                 <thead>
                 <tr>
-                    <th>Appointments</th>
+                    <th>New Appointments</th>
                 </tr>
                 </thead>
                 <tbody id="appointments">

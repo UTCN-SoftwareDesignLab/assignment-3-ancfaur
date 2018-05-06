@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Patients' Consultations</title>
+</head>
+<form th:action="@{'/doctor/patientDocTable'}" method="post">
+<table>
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>CNP</th>
+        <th>Birthdate</th>
+    </tr>
+
+    <th:block th:each="patientDto : ${patientDtos}">
+        <tr>
+            <td th:text="${patientDto.id}"></td>
+            <td th:text="${patientDto.name}"></td>
+            <td th:text="${patientDto.cnp}"></td>
+            <td th:text="${patientDto.birthdate}"></td>
+            <td>
+                <a th:href ="@{'/consultDocTable/' + ${patientDto.id}}">See consultations</a>
+            </td>
+        </tr>
+    </th:block>
+
+    </thead>
+    <tbody>
+    </tbody>
+</table>
+
+<hr />
+</html>

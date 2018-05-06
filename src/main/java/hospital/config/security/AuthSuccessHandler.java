@@ -1,4 +1,4 @@
-package hospital.config;
+package hospital.config.security;
 
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -16,6 +16,6 @@ public class AuthSuccessHandler extends SavedRequestAwareAuthenticationSuccessHa
             if (role.contains("ROLE_DOCTOR")) return "/doctor/doctorMenu";
             if (role.contains("ROLE_ADMINISTRATOR")) return "/admin/administratorMenu";
             if (role.contains("ROLE_SECRETARY")) return "/secretary/secretaryMenu";
-            return "/noPage";
+            return "/error";
         }
 }

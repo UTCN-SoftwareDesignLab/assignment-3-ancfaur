@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Consults Edit</title>
+</head>
+<body>
+<form th:action="@{'/doctor/fillConsTable'}" method="post">
+    <table border="2">
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>Doctor id</th>
+            <th>Patient id</th>
+            <th>Diagnostic</th>
+            <th>Description</th>
+            <th>Date</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="consultationDto : ${consultationDtos}">
+            <td th:text = "${consultationDto.id}"></td>
+            <td th:text="${consultationDto.doctor_id}"></td>
+            <td th:text="${consultationDto.patient_id}"></td>
+            <td th:text="${consultationDto.diagnostic}"></td>
+            <td th:text="${consultationDto.description}"></td>
+            <td th:text="${consultationDto.date}"></td>
+            <td>
+                <a th:href ="@{'/consultation/' + ${consultationDto.id}}">Edit consultation remarks</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</form>
+
+<a href="/doctor/doctorMenu">Back to doctor menu page</a>
+</body>
+</html>

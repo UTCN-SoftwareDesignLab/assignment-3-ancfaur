@@ -1,19 +1,47 @@
 <!DOCTYPE HTML>
-<html lang="en"
-      xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:th="http://www.thymeleaf.org">
+<html   lang="en"
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Doctor Menu</title>
+    <link href="/webjars/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/main.css" rel="stylesheet">
+    <script src="/webjars/jquery/jquery.min.js"></script>
+    <script src="/webjars/sockjs-client/sockjs.min.js"></script>
+    <script src="/webjars/stomp-websocket/stomp.min.js"></script>
+    <script src="/appDoc.js"></script>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
-<body>
-<form action="#" th:action="@{/doctor/doctorMenu}" method="post">
-    <p> This is the doctor page!</p>
+<body onload="connect()" onunload="disconnect()">
+<h1>Choose operation type</h1>
+<form action="#" name="adminMenu" th:action="@{/doctor/doctorMenu}" method="post">
+    <p><input type="submit" name="patientRecordsBtn" value="See patient records" /></p>
+    <p><input type="submit" name="manageConsultBtn" value="Manage your consultations" /></p>
 </form>
 
 <form th:action="@{/logout}" method="post">
     <input type="submit" name="logoutBtn" value="Log Out"/>
 </form>
+
+<noscript><h2 style="color: #ff0000">Seems your browser doesn't support Javascript! Websocket relies on Javascript being
+    enabled. Please enable
+    Javascript and reload this page!</h2></noscript>
+<div id="main-content" class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <table id="conversation" class="table table-striped">
+                <thead>
+                <tr>
+                    <th>Appointments</th>
+                </tr>
+                </thead>
+                <tbody id="appointments">
+                </tbody>
+            </table>
+        </div>
+    </div>
+    </form>
+</div>
 
 </body>
 </html>

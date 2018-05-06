@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Consultation</title>
+</head>
+<body>
+<form th:action="@{'/consultation/' +${consultationDto.id}}" th:object="${consultationDto}" method="post">
+    Id:  <input type="text" value="${consultationDto.id}" name="id" th:field="${consultationDto.id}"/>
+    <br />
+    Diagnostic: <input type="text" value="${consultationDto.diagnostic}" name="diagnostic" th:field="${consultationDto.diagnostic}"/>
+    <br />
+    Description: <input type="text" value="${consultationDto.description}" name="description" th:field="${consultationDto.description}"/>
+    <br />
+    <p><input type="submit" name="updateBtn" value="Commit details" /></p>
+</form>
+
+</body>
+</html>

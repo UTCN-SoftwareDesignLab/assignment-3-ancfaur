@@ -1,7 +1,5 @@
 package hospital.dto;
 
-import java.util.Date;
-
 public class ConsultationDto {
 
     private Long id;
@@ -9,11 +7,11 @@ public class ConsultationDto {
     private Long patient_id;
     private String diagnostic;
     private String description;
-    private Date date;
+    private String date;
 
     public ConsultationDto(){}
 
-    public ConsultationDto(Long doctor_id, Long patient_id, String diagnostic, String description, Date date) {
+    public ConsultationDto(Long doctor_id, Long patient_id, String diagnostic, String description, String date) {
         this.doctor_id = doctor_id;
         this.patient_id = patient_id;
         this.diagnostic = diagnostic;
@@ -21,7 +19,7 @@ public class ConsultationDto {
         this.date = date;
     }
 
-    public ConsultationDto(Long id, Long doctor_id, Long patient_id, String diagnostic, String description, Date date) {
+    public ConsultationDto(Long id, Long doctor_id, Long patient_id, String diagnostic, String description, String date) {
         this.id = id;
         this.doctor_id = doctor_id;
         this.patient_id = patient_id;
@@ -38,11 +36,11 @@ public class ConsultationDto {
         this.id = id;
     }
 
-    public Date getDate() {
+    public String getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(String date) {
         this.date = date;
     }
 

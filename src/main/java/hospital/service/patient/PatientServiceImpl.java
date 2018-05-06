@@ -7,6 +7,8 @@ import hospital.repository.PatientRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class PatientServiceImpl implements PatientService {
     private PatientRepository patientRepository;
@@ -30,5 +32,16 @@ public class PatientServiceImpl implements PatientService {
     public void update(PatientDto patientDto) {
         Patient patient = patientConverter.fromDto(patientDto);
         patientRepository.save(patient);
+    }
+
+    @Override
+    public List<PatientDto> findAll() {
+        List<Patient> patients = patientRepository.findAll();
+        return patientConverter.toDto(patients);
+    }
+
+    @Override
+    public PatientDto findById(Long id){
+        return patientConverter.toDto(patientRepository.findById(id).orElse(null));
     }
 }

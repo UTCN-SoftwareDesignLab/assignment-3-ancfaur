@@ -137,6 +137,16 @@ public class SecretaryController {
         return "redirect:/secretary/secretaryMenu";
     }
 
+    @PostMapping(params = "announceConsBtn")
+    public String announcePatCons(@RequestParam("consId") String consId) {
+        AppoitmentDto appoitmentDto = new AppoitmentDto();
+        ConsultationDto consultationDto = consultationService.findById(Long.parseLong(consId));
+        PatientDto patientDto = patientService.findById(consultationDto.getPatient_id());
+        UserDto doctor = userService.findById(consultationDto.getDoctor_id());
+        appoitmentDto.setContent("Patient :" + patientDto.getName()+" has arrived for consultation at " + " Date:" + consultationDto.getDate());
+        messagingTemplate.convertAndSendToUser(doctor.getUsername(), "/queue/reply", appoitmentDto);
+        return "redirect:/secretary/secretaryMenu";
+    }
 
     @PostMapping(value = "/error")
     @ExceptionHandler({ConsultationOverlapException.class})
